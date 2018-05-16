@@ -17,18 +17,42 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
-        sceneView.delegate = self
+//        // Set the view's delegate
+//        sceneView.delegate = self
+//
+//        // Show statistics such as fps and timing information
+//        sceneView.showsStatistics = true
+//
+//        // Create a new scene
+//        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+//
+//        // Set the scene to the view
+//        sceneView.scene = scene
+            addBox()
+    }
+    
+    
+    func addBox() {
+        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        let boxNode1 = SCNNode()
+        let boxNode = SCNNode()
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
-        // Set the scene to the view
+        boxNode.geometry = box
+        boxNode.position = SCNVector3(0, 0, -0.2)
+        
+        boxNode1.geometry = box
+        boxNode1.position = SCNVector3(0, 0, -0.4)
+        
+        
+        let scene = SCNScene()
+        scene.rootNode.addChildNode(boxNode)
+        scene.rootNode.addChildNode(boxNode1)
+
         sceneView.scene = scene
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
