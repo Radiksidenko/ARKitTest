@@ -37,7 +37,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let boxNode1 = SCNNode()
         let boxNode = SCNNode()
-        
+        let boxNode2 = SCNNode()
         
         boxNode.geometry = box
         boxNode.position = SCNVector3(0, 0, -0.2)
@@ -45,11 +45,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         boxNode1.geometry = box
         boxNode1.position = SCNVector3(0, 0, -0.4)
         
+        boxNode2.geometry = box
+        boxNode2.position = SCNVector3(0, -0.1, -0.1)
+        
         
         let scene = SCNScene()
         scene.rootNode.addChildNode(boxNode)
         scene.rootNode.addChildNode(boxNode1)
-
+        scene.rootNode.addChildNode(boxNode2)
         sceneView.scene = scene
     }
     
