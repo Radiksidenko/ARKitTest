@@ -100,6 +100,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         scene.rootNode.addChildNode(lineNode9)
         scene.rootNode.addChildNode(lineNode10)
         scene.rootNode.addChildNode(lineNode11)
+        
         sceneView.scene = scene
     }
     
@@ -120,6 +121,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
+//        sceneView.removeFromSuperview()
         sceneView.session.run(configuration)
     }
     
@@ -131,5 +133,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBOutlet var outputImageView:UIImageView!
+    @IBAction func photo(_ sender: Any) {
+    var image = sceneView.snapshot()
+        outputImageView.image = sceneView.snapshot()
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+    
+    
+    
 
 }
